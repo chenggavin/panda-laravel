@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrderedFoodTable extends Migration
+class CreateItemOrderTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class CreateOrderedFoodTable extends Migration
      */
     public function up()
     {
-        Schema::create('ordered_food', function (Blueprint $table) {
+        Schema::create('item_order', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('order_id')->unsigned();
+            $table->foreign('order_id')->references('id')->on('orders');
+            $table->integer('item_id')->unsigned();
+            $table->foreign('item_id')->references('id')->on('orders');
             $table->timestamps();
+
         });
     }
 
@@ -26,6 +31,6 @@ class CreateOrderedFoodTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ordered_food');
+        Schema::dropIfExists('item_order');
     }
 }
