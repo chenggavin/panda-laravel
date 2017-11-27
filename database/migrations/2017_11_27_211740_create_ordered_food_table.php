@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQuoteTable extends Migration
+class CreateOrderedFoodTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateQuoteTable extends Migration
      */
     public function up()
     {
-        Schema::create('quotes', function (Blueprint $table) {
+        Schema::create('ordered_food', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->text('content');
         });
     }
 
@@ -27,6 +26,6 @@ class CreateQuoteTable extends Migration
      */
     public function down()
     {
-        Schema::drop('quotes');
+        Schema::dropIfExists('ordered_food');
     }
 }
