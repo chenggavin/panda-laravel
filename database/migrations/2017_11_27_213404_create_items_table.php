@@ -13,7 +13,7 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('menu', function (Blueprint $table) {
+        Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
             $table->string('type');
             $table->string('name');

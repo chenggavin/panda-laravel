@@ -71,7 +71,7 @@
 				<div>
 					<ul class="nav nav-pills" role="tablist">
 	  					<li role="presentation" class="active"><a href="#">Home</a></li>
-	  					<li role="presentation"><a href="#">Menu</a></li>
+	  					<li role="presentation"><a href="/menu">Menu</a></li>
   						<li role="presentation"><a href="#">Contact Us</a></li>
   						<li style="float:right;" role="presentation" class="active"><a href="#">cart <span class="badge">42</span></a></li>
 					</ul>
