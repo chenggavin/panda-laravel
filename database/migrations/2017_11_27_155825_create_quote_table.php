@@ -13,7 +13,7 @@ class CreateQuoteTable extends Migration
      */
     public function up()
     {
-        Schema::create('quotes', function(Blueprint $table) {
+        Schema::create('quotes', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->text('content');
