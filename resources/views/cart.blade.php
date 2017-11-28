@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container">
-        <p><a href="{{ url('shop') }}">Home</a> / Cart</p>
+        <p><a href="{{ url('menu') }}">Home</a> / Cart</p>
         <h1>Your Cart</h1>
 
         <hr>
@@ -114,6 +114,7 @@
 @endsection
 
 @section('extra-js')
+<h1>hi</h1>
     <script>
         (function(){
 
