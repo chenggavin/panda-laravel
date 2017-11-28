@@ -28,6 +28,7 @@
                         <th class="table-image"></th>
                         <th>Product</th>
                         <th>Quantity</th>
+                        <th>Options</th>
                         <th>Price</th>
                         <th class="column-spacer"></th>
                         <th></th>
@@ -35,6 +36,7 @@
                 </thead>
 
                 <tbody>
+                    {{ Cart::content() }}
                     @foreach (Cart::content() as $item)
                     <tr>
                         <td class="table-image"><a href="{{ url('menu', [$item->model->slug]) }}"><img src="{{ asset('img/' . $item->model->image) }}" alt="image" class="img-responsive cart-image"></a></td>
@@ -46,6 +48,12 @@
                                 <option {{ $item->qty == 3 ? 'selected' : '' }}>3</option>
                                 <option {{ $item->qty == 4 ? 'selected' : '' }}>4</option>
                                 <option {{ $item->qty == 5 ? 'selected' : '' }}>5</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="options" data-id="{{ $item->rowId }}">
+                                <option {{ $item->option == 'pint' ? 'selected' : '' }}>pint</option>
+                                <option {{ $item->option == 'quart' ? 'selected' : '' }}>quart</option>
                             </select>
                         </td>
                         <td>${{ $item->subtotal }}</td>
@@ -63,13 +71,16 @@
                     <tr>
                         <td class="table-image"></td>
                         <td></td>
+                        <td></td>
                         <td class="small-caps table-bg" style="text-align: right">Subtotal</td>
                         <td>${{ Cart::instance('default')->subtotal() }}</td>
                         <td></td>
                         <td></td>
+
                     </tr>
                     <tr>
                         <td class="table-image"></td>
+                        <td></td>
                         <td></td>
                         <td class="small-caps table-bg" style="text-align: right">Tax</td>
                         <td>${{ Cart::instance('default')->tax() }}</td>
@@ -80,6 +91,7 @@
                     <tr class="border-bottom">
                         <td class="table-image"></td>
                         <td style="padding: 40px;"></td>
+                        <td></td>
                         <td class="small-caps table-bg" style="text-align: right">Your Total</td>
                         <td class="table-bg">${{ Cart::total() }}</td>
                         <td class="column-spacer"></td>
@@ -131,6 +143,21 @@
                   url: '{{ url("/cart") }}' + '/' + id,
                   data: {
                     'quantity': this.value,
+                  },
+                  success: function(data) {
+                    window.location.href = '{{ url('/cart') }}';
+                  }
+                });
+
+            });
+
+            $('.options').on('change', function() {
+                var id = $(this).attr('data-id')
+                $.ajax({
+                  type: "PATCH",
+                  url: '{{ url("/cart") }}' + '/' + id,
+                  data: {
+                    'options': 1,
                   },
                   success: function(data) {
                     window.location.href = '{{ url('/cart') }}';
