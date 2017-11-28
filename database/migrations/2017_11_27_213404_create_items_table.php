@@ -17,6 +17,7 @@ class CreateItemsTable extends Migration
             $table->increments('id');
             $table->string('type');
             $table->string('name');
+            $table->string('slug')->unique();
             $table->decimal('price', 4, 2);
             $table->text('description')->nullable();
             $table->boolean('is_spicy')->default(false);
