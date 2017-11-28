@@ -46,11 +46,12 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+    $item = \App\Item::where('slug', $slug)->firstOrFail();
+    // return $item;
+    return view('single', compact('item'));
     }
-
     /**
      * Show the form for editing the specified resource.
      *

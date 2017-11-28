@@ -19,6 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/menu', 'ItemController');
+Route::resource('shop', 'CartController', ['only' => ['index', 'store', 'update', 'destroy']]);
 
-Route::resource('shop', 'ItemController', ['only' => ['index', 'show']]);
+Route::resource('/menu', 'ItemController', ['only' => ['index', 'show']]);
