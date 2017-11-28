@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Requests;
+use \Cart as Cart;
+use Validator;
+
+
 class CartController extends Controller
 {
     /**
@@ -34,7 +39,8 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-    Cart::associate('\App\Item','App')->add($request->id, $request->name, 1, $request->price);
+        $cartItem = Cart::add($request->id, $request->name, 1, $request->price);
+        Cart::associate($cartItem->rowId, '\App\Item');
     return redirect('cart')->withSuccessMessage('Item was added to your cart!');
     }
 
@@ -80,7 +86,6 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        Cart::remove($id);
-        return redirect('cart')->withSuccessMessage('Item has been removed!');
+        //
     }
 }

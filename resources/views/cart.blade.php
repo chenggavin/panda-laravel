@@ -37,8 +37,8 @@
                 <tbody>
                     @foreach (Cart::content() as $item)
                     <tr>
-                        <td class="table-image"><a href="{{ url('shop', [$item->model->slug]) }}"><img src="{{ asset('img/' . $item->model->image) }}" alt="product" class="img-responsive cart-image"></a></td>
-                        <td><a href="{{ url('shop', [$item->model->slug]) }}">{{ $item->name }}</a></td>
+                        <td class="table-image"><a href="{{ url('menu', [$item->model->slug]) }}"><img src="{{ asset('img/' . $item->model->image) }}" alt="image" class="img-responsive cart-image"></a></td>
+                        <td><a href="{{ url('menu', [$item->model->slug]) }}">{{ $item->name }}</a></td>
                         <td>
                             <select class="quantity" data-id="{{ $item->rowId }}">
                                 <option {{ $item->qty == 1 ? 'selected' : '' }}>1</option>
@@ -55,11 +55,6 @@
                                 {!! csrf_field() !!}
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="submit" class="btn btn-danger btn-sm" value="Remove">
-                            </form>
-
-                            <form action="{{ url('switchToWishlist', [$item->rowId]) }}" method="POST" class="side-by-side">
-                                {!! csrf_field() !!}
-                                <input type="submit" class="btn btn-success btn-sm" value="To Wishlist">
                             </form>
                         </td>
                     </tr>
@@ -94,7 +89,7 @@
                 </tbody>
             </table>
 
-            <a href="{{ url('/shop') }}" class="btn btn-primary btn-lg">Continue Shopping</a> &nbsp;
+            <a href="{{ url('/menu') }}" class="btn btn-primary btn-lg">Continue Shopping</a> &nbsp;
             <a href="#" class="btn btn-success btn-lg">Proceed to Checkout</a>
 
             <div style="float:right">
@@ -108,7 +103,7 @@
         @else
 
             <h3>You have no items in your shopping cart</h3>
-            <a href="{{ url('/shop') }}" class="btn btn-primary btn-lg">Continue Shopping</a>
+            <a href="{{ url('/menu') }}" class="btn btn-primary btn-lg">Continue Shopping</a>
 
         @endif
 

@@ -73,7 +73,7 @@
 	  					<li role="presentation" class="active"><a href="#">Home</a></li>
 	  					<li role="presentation"><a href="/menu">Menu</a></li>
   						<li role="presentation"><a href="#">Contact Us</a></li>
-  						<li style="float:right;" role="presentation" class="active"><a href="#">cart <span class="badge">42</span></a></li>
+  						<li class=""><a href="{{ url('/cart') }}">Cart ({{ Cart::instance('default')->count(false) }})</a></li>
 					</ul>
 
 				</div>
@@ -82,6 +82,18 @@
         </nav>
 
         @yield('content')
+
+        <footer>
+          <div class="container">
+
+          </div>
+        </footer>
+
+<!-- JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+@yield('extra-js')
     </div>
 
     <!-- Scripts -->
