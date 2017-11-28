@@ -117,4 +117,10 @@ class CartController extends Controller
         Cart::destroy();
         return redirect('cart')->withSuccessMessage('Your cart has been cleared!');
     }
+
+    public function checkout()
+    {
+        return view('checkout');
+    }
+    
 }

@@ -12,14 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/home');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('/menu', 'ItemController', ['only' => ['index', 'show']]);
-Route::resource('cart', 'CartController');
 Route::delete('emptyCart', 'CartController@emptyCart');
+Route::get('/checkout', 'CartController@checkout');
+Route::resource('/menu', 'ItemController', ['only' => ['index', 'show']]);
+
+Route::resource('cart', 'CartController');
+
 
 

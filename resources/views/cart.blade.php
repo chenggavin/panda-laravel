@@ -90,7 +90,7 @@
             </table>
 
             <a href="{{ url('/menu') }}" class="btn btn-primary btn-lg">Continue Shopping</a> &nbsp;
-            <a href="#" class="btn btn-success btn-lg">Proceed to Checkout</a>
+            <a href="{{ url('/checkout') }}" class="btn btn-success btn-lg">Proceed to Checkout</a>
 
             <div style="float:right">
                 <form action="{{ url('/emptyCart') }}" method="POST">
@@ -114,7 +114,7 @@
 @endsection
 
 @section('extra-js')
-<h1>hi</h1>
+
     <script>
         (function(){
 
